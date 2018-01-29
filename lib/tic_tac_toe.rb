@@ -80,31 +80,31 @@ class TicTacToe
     end
   end
 
-  def full?(board)
-    board.all?{|player| player == "X" || player == "O"}
+  def full?
+    @board.all?{|player| player == "X" || player == "O"}
   end
 
-  def draw?(board)
-    full?(board) && !won?(board)
+  def draw?
+    full? && !won?
   end
 
-  def over?(board)
-    won?(board) || draw?(board)
+  def over?
+    won? || draw?
   end
 
-  def winner(board)
-    if winning_combo = won?(board)
-      board[winning_combo.first]
+  def winner
+    if winning_combo = won?
+      @board[winning_combo.first]
     end
   end
 
-  def play(board)
-    while !over?(board)
-      turn(board)
+  def play
+    while !over?
+      turn
     end
-    if won?(board)
-      puts "Congratulations #{winner(board)}!"
-    elsif draw?(board)
+    if won?
+      puts "Congratulations #{winner}!"
+    elsif draw?
       puts "Cat's Game!"
     end
   end
